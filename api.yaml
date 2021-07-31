@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: luiza-api-deployment
+  namespace: luiza-local
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: app
+        imagePullPolicy: Never
+        image: luiza:latest
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: luiza-api-service
+  namespace: luiza-local
+spec:
+  type: NodePort
+  selector:
+    app: api
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30005
+
