@@ -1,6 +1,6 @@
 # -- CONFIGS --
 APP_NAME=luiza
-VERSION=latest
+VERSION=v1
 PORT=5000
 CONFIG_FILE=api.yaml
 NAMESPACE=luiza-local
@@ -31,12 +31,12 @@ docker-sh: ## Start Bash session in container
 
 kube-build-dev: kube-minicube-start docker-build kube-namespace kube-create
 
-kube-run-dev: kube-minicube-start docker-build kube-create
+kube-run-dev: kube-minicube-start docker-build kube-update
 
 
 kube-minicube-start:
-	eval $(minikube docker-env)
 	minikube start --driver=docker
+	eval $(minikube docker-env)
 	
 kube-namespace:
 	kubectl create namespace $(NAMESPACE)
