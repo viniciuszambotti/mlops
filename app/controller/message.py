@@ -1,5 +1,8 @@
 from marshmallow import Schema, fields
 
+'''
+    Cria os schemas que serão usados para validar as chamadas e documentar o swagger
+'''
 
 class ClassifyResponseSchema(Schema):
     card_classification = fields.Str(default='Success')

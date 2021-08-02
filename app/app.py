@@ -12,6 +12,9 @@ app = Flask(__name__)
 
 api = Api(app)
 
+'''
+    Cria a configuração do swagger
+'''
 app.config.update({
     'APISPEC_SPEC': APISpec(
         title='Luiza labs',
@@ -25,6 +28,8 @@ app.config.update({
 docs = FlaskApiSpec(app)
 
 
-
-api.add_resource(Classify, '/classify')
+'''
+    Criação de rotas
+'''
+api.add_resource(Classify, '/classify') # classificação dos dados
 docs.register(Classify)

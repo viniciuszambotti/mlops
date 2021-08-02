@@ -22,15 +22,23 @@ class Classify(MethodResource, Resource):
 
     @doc(description='Faz predição de acordo com o id da carta', tags=['Predictions'])
     @use_kwargs(ClassifyRequestSchema, location=('json'))
-
     @marshal_with(ClassifyResponseSchema, code=200)
     @marshal_with(ClassifyError406, code=406)
     @marshal_with(ClassifyError500, code=500)
     def post(self, card_id):
         
         '''
-        Get method represents a GET API method
+            Método post que faz as classificações das cartas
+            
+            params
+                card_id (Int): Número da carta para ser classificado
+            
+            returns
+                - Classificação (early ou late)
+            
         '''
+
+        # abre arquivo de modelo e teste
         try:
             with open(model_path, 'rb') as handle:
                 ml_model = pickle.load(handle)
@@ -43,7 +51,7 @@ class Classify(MethodResource, Resource):
 
         
         
-        value = df_test.query('id == @card_id')[features]
+        value = df_test.query('id == @card_id')[features] # faz a predição
 
         if value.shape[0] < 1:
             abort(406, 'Não encontrou a carta')
@@ -68,8 +76,16 @@ class Classify(MethodResource, Resource):
     def get(self):
         
         '''
-        Get method represents a GET API method
+            Método get que faz as classificações de todas as cartas
+            
+            params
+            
+            returns
+                - Lista com os ids e classificações (late ou early)
+            
         '''
+
+        # abre arquivo de modelo e teste
         try:
             with open(model_path, 'rb') as handle:
                 ml_model = pickle.load(handle)
@@ -82,12 +98,13 @@ class Classify(MethodResource, Resource):
         
 
         try:
-            preds = ml_model.predict(df_test[features])
+            preds = ml_model.predict(df_test[features]) #faz predições
             ids = df_test['id']
 
         except Exception as e:
             abort(500, f'Erro na predição: {e}')
 
+        # cria json com predições Ex:{id_carta:0, startegy:early}
         try:
             predictions = pd.DataFrame()
             predictions['id'] = ids
