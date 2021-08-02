@@ -10,10 +10,8 @@ from flask import abort
 import os
 from dotenv import load_dotenv
 
+# Variáveis de ambiente
 load_dotenv()
-
-
-
 model_path = os.getenv('MODEl_PATH')
 test_path = os.getenv('TEST_PATH')
 features = ['mana', 'attack', 'health', 'cat_god', 'cat_type']
@@ -71,7 +69,6 @@ class Classify(MethodResource, Resource):
 
     @doc(description='Faz predição de todas as cartas do arquivo de teste', tags=['Predictions'])
     @marshal_with(ClassifyResponseSchema, code=200)
-    @marshal_with(ClassifyError406, code=406)
     @marshal_with(ClassifyError500, code=500)
     def get(self):
         

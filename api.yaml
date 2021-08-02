@@ -16,7 +16,7 @@ spec:
       containers:
       - name: app
         imagePullPolicy: Never
-        image: luiza:v1
+        image: luiza:v3
 
 ---
 apiVersion: v1

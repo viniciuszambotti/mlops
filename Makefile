@@ -1,6 +1,6 @@
 # -- CONFIGS --
 APP_NAME=luiza
-VERSION=v2
+VERSION=v3
 PORT=5000
 CONFIG_FILE=api.yaml
 NAMESPACE=luiza-local
@@ -34,13 +34,9 @@ docker-sh: # acessa o container
 
 
 ## KUBERNETS LOCAL
-kube-build-dev: kube-minicube-start docker-build kube-namespace kube-create
+kube-build-dev: docker-build kube-namespace kube-create
 
-kube-run-dev: kube-minicube-start docker-build kube-update
-
-kube-minicube-start: # inicia o minikube
-	minikube start --driver=docker
-	eval $(minikube docker-env)
+kube-run-dev: docker-build kube-update	
 	
 kube-namespace: # Cria um namespace
 	kubectl create namespace $(NAMESPACE)

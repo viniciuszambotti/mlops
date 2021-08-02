@@ -4,8 +4,10 @@ import pickle
 
 
 
-df = pd.read_csv('../data/test.csv')
+df_test = pd.read_csv('../data/test.csv')
+df_train = pd.read_csv('../data/train.csv')
 
+df = df_test.append(df_train)
 # Transforma variaveis string em categórica
 df[['god','type']] = df[['god','type']].astype("category")
 

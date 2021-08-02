@@ -33,3 +33,5 @@ docs = FlaskApiSpec(app)
 '''
 api.add_resource(Classify, '/classify') # classificação dos dados
 docs.register(Classify)
+
+
