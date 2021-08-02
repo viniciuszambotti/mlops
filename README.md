@@ -51,6 +51,7 @@ Altere os arquivos .env
 #### Kubernets local usando o minikube
 
 Altere os arquivos .env
+
 	minikube start --driver=docker
 	eval $(minikube docker-env)
 	make kube-build-dev
