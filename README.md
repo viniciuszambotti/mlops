@@ -1,6 +1,5 @@
 
-# Desafio MLE Luiza labs
-
+# Desafio MLE
   
 
 O desafio consiste em criar um modelo de machine learning e em seguida uma API que consuma esse modelo para realizar classificações.
@@ -28,7 +27,7 @@ Todos os comandos estão documentados no arquivo Makefile
 
 #### Link do GCP
 
-#### http://34.95.245.106:5000/swagger-ui/
+#### http://34.95.245.106:5000/swagger-ui/ (desativado)
 
   
 
@@ -56,7 +55,7 @@ Altere os arquivos .env
 	eval $(minikube docker-env)
 	make kube-build-dev
 	kubectl get pods
-	kubectl port-forward {pod_id} 5000:5000 --namespace=luiza-local
+	kubectl port-forward {pod_id} 5000:5000 --namespace=mlops-local
 
   
 

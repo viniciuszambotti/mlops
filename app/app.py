@@ -17,7 +17,7 @@ api = Api(app)
 '''
 app.config.update({
     'APISPEC_SPEC': APISpec(
-        title='Luiza labs',
+        title='mlops',
         version='v1.0',
         plugins=[MarshmallowPlugin()],
         openapi_version='2.0.0'

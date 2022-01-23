@@ -1,10 +1,10 @@
 # -- CONFIGS --
-APP_NAME=luiza
+APP_NAME=mlops
 VERSION=v3
 PORT=5000
 CONFIG_FILE=api.yaml
-NAMESPACE=luiza-local
-GCLOUD_URL=southamerica-east1-docker.pkg.dev/groovy-smithy-255116/luiza-labs/
+NAMESPACE=mlops-local
+#GCLOUD_URL=southamerica-east1-docker.pkg.dev/groovy-smithy-255116
 
 
 ## AMBIENTE LOCAL

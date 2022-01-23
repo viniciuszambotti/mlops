@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: luiza-api-deployment
-  namespace: luiza-local
+  name: mlops-api-deployment
+  namespace: mlops-local
 spec:
   replicas: 1
   selector:
@@ -16,14 +16,14 @@ spec:
       containers:
       - name: app
         imagePullPolicy: Never
-        image: luiza:v3
+        image: mlops:v3
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: luiza-api-service
-  namespace: luiza-local
+  name: mlops-api-service
+  namespace: mlops-local
 spec:
   type: NodePort
   selector:
